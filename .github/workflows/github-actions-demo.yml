@@ -2,7 +2,7 @@ name: Yandex Infrastructure Assignment
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Ts-check:
+  Ts-linter-check:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -11,10 +11,19 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - run: echo "🖥️ The workflow is being started to setup node."
       - uses: actions/setup-node@v3
         with:
           node-version: '16.16.0'
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - run: echo "🔧 The workflow is being started to install node_modules."
       - run: npm ci
+      - run: echo "🔧 The workflow is ready with node_modules."
+      - run: echo "The workflow is now ready to run package scripts."
+      - run: echo "The workflow is going to start type-safe checking"
       - run: npm run ts
+      - run: echo "The type-safe checking is successful"
+      - run: echo "The workflow is going to start linter checking"
+      - run: npm run lint
+      - run: echo "The typelinter checking is successful"
       - run: echo "🍏 This job's status is ${{ job.status }}."
