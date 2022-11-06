@@ -42,5 +42,5 @@ jobs:
       - run: echo "Executable permission is given to ./release-bundling.sh"
       - run: echo "Started to execute ./release-bundling.sh script"
       - run: ./release-bundling.sh
-      - run: echo "Status of ./release-bundling.sh script is $?"
+      - run: echo "Status of ./release-bundling.sh script is "$?
       - run: echo "🍏 This job's status is ${{ job.status }}."
